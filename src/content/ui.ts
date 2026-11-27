@@ -17,7 +17,7 @@ export const ui = {
     backTop: 'Voltar ao início da página',
     role: 'Analista de Dados & Business Intelligence',
     heroDescription:
-      'Sou analista de dados com experiência no setor financeiro, em projetos de Business Intelligence, engenharia e automação de dados. Atualmente curso Ciência de Dados e Inteligência Artificial.',
+      'Atuo como Analista de Dados no setor financeiro, com experiência em Business Intelligence, engenharia e automação de dados. Sou Graduanda em Ciência de Dados e Inteligência Artificial pela Universidade de Sorocaba.',
     heroExperience: 'Explorar experiências',
     heroProjects: 'Ver projetos',
     capabilities: 'Competências-chave',
@@ -91,7 +91,7 @@ export const ui = {
     backTop: 'Back to top',
     role: 'Data Analyst & Business Intelligence',
     heroDescription:
-      'I work in data analytics for financial services, with experience in Business Intelligence, data engineering and automation. I am currently studying Data Science and Artificial Intelligence.',
+      'I work as a Data Analyst in the financial sector, with experience in Business Intelligence, data engineering and automation. I am an undergraduate student in Data Science and Artificial Intelligence at the University of Sorocaba.',
     heroExperience: 'Explore experience',
     heroProjects: 'View projects',
     capabilities: 'Core capabilities',
