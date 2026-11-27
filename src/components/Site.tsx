@@ -167,8 +167,8 @@ export default function Site({
             <Image
               src="/favicon.png"
               alt=""
-              width={40}
-              height={40}
+              width={64}
+              height={64}
               className="brand-mark"
               aria-hidden="true"
             />
@@ -272,10 +272,10 @@ export default function Site({
                           ? 'Retrato de Sabrina Yokoyama'
                           : 'Portrait of Sabrina Yokoyama'
                       }
-                      width={410}
-                      height={410}
+                      width={330}
+                      height={330}
                       priority
-                      sizes="(max-width: 850px) 350px, 410px"
+                      sizes="(max-width: 850px) 300px, 330px"
                     />
                   </div>
                   <div className="hero-contact-icons">

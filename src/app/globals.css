@@ -1,12 +1,7 @@
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
-@import '@fontsource/space-grotesk/400.css';
-@import '@fontsource/space-grotesk/500.css';
-@import '@fontsource/space-grotesk/600.css';
-@import '@fontsource/space-grotesk/700.css';
-@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
 :root {
   color-scheme: dark;
   --bg: #0c061e;
@@ -64,7 +59,7 @@ body {
     cover;
   background-attachment: fixed;
   color: var(--text);
-  font-family: Inter, Arial, sans-serif;
+  font-family: Poppins, Arial, sans-serif;
   font-size: 17px;
   line-height: 1.6;
   overflow-x: hidden;
@@ -92,7 +87,7 @@ p {
 h1,
 h2,
 h3 {
-  font-family: 'Space Grotesk', Inter, sans-serif;
+  font-family: Poppins, Arial, sans-serif;
   line-height: 1.13;
   letter-spacing: -0.045em;
 }
@@ -156,25 +151,28 @@ p {
 }
 .brand-mark {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
   flex-shrink: 0;
 }
 .brand-copy {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  justify-content: flex-end;
+  min-height: 64px;
+  gap: 4px;
   min-width: 0;
 }
 .brand-copy strong {
-  font-family: 'Space Grotesk';
-  font-size: 16px;
+  font-family: Poppins;
+  font-size: 24px;
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 .brand-copy small {
   font-size: 16px;
+  line-height: 1.2;
   color: var(--subtle);
   white-space: nowrap;
   max-width: 510px;
@@ -232,7 +230,7 @@ p {
   background: var(--surface-hover);
 }
 .lang-button {
-  font-family: 'JetBrains Mono';
+  font-family: Poppins;
   font-size: 16px;
   letter-spacing: 0;
   width: 52px;
@@ -251,7 +249,7 @@ p {
 .timeline-period,
 .project-area,
 .detail-area {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: Poppins, Arial, sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -261,29 +259,29 @@ p {
   color: var(--accent);
 }
 .hero {
-  min-height: 640px;
+  min-height: 500px;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   align-items: center;
   gap: 6vw;
-  padding-top: 88px;
-  padding-bottom: 88px;
+  padding-top: 50px;
+  padding-bottom: 40px;
 }
 .hero h1 {
   margin: 0 0 20px;
-  font-size: clamp(1.85rem, 4.3vw, 4.5rem);
+  font-size: clamp(2rem, 5.5vw, 5.2rem);
   line-height: 1.04;
   color: var(--accent);
   white-space: nowrap;
 }
 .hero-role {
-  font: 600 20px/1.4 'Space Grotesk';
+  font: 600 20px/1.4 Poppins;
   color: var(--text);
   letter-spacing: -0.02em;
   margin-bottom: 26px;
 }
 .hero-description {
-  max-width: 590px;
+  max-width: 700px;
   font-size: 17px;
   line-height: 1.7;
 }
@@ -293,6 +291,11 @@ p {
   gap: 12px;
   margin-top: 36px;
   flex-wrap: wrap;
+}
+.hero .button-row .button {
+  min-width: 240px;
+  min-height: 56px;
+  font-size: 16px;
 }
 .button {
   display: inline-flex;
@@ -335,7 +338,7 @@ p {
   justify-content: flex-end;
 }
 .portrait-stack {
-  width: min(100%, 410px);
+  width: min(100%, 330px);
 }
 .portrait-frame {
   position: relative;
@@ -370,6 +373,9 @@ p {
 }
 .section {
   padding-block: 95px;
+}
+#capabilities {
+  padding-top: 40px;
 }
 .section-heading {
   display: flex;
@@ -503,12 +509,12 @@ p {
 }
 .case-topline {
   color: var(--subtle);
-  font: 400 0.7rem 'JetBrains Mono';
+  font: 400 0.7rem Poppins;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 .metric-display {
-  font: 600 clamp(5rem, 9vw, 8rem)/1 'Space Grotesk';
+  font: 600 clamp(5rem, 9vw, 8rem)/1 Poppins;
   letter-spacing: -0.09em;
   color: var(--accent);
 }
@@ -598,12 +604,12 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .placeholder-mark {
-  font: 600 4rem 'Space Grotesk';
+  font: 600 4rem Poppins;
   letter-spacing: -0.1em;
   opacity: 0.25;
 }
 .placeholder-caption {
-  font: 400 0.62rem 'JetBrains Mono';
+  font: 400 0.62rem Poppins;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.8;
@@ -612,7 +618,7 @@ p {
   padding: 17px 8px 3px;
 }
 .polaroid-body strong {
-  font: 600 1.02rem 'Space Grotesk';
+  font: 600 1.02rem Poppins;
   display: block;
   color: #211536;
 }
@@ -668,7 +674,7 @@ p {
 }
 .timeline-company {
   color: var(--accent);
-  font: 400 0.73rem 'JetBrains Mono';
+  font: 400 0.73rem Poppins;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -712,7 +718,7 @@ p {
 }
 .case-metric strong {
   color: var(--accent);
-  font: 600 3.6rem/0.9 'Space Grotesk';
+  font: 600 3.6rem/0.9 Poppins;
   letter-spacing: -0.08em;
 }
 .case-metric span {
@@ -809,7 +815,7 @@ p {
   gap: 7px;
 }
 .impact-card strong {
-  font: 600 2.8rem/0.95 'Space Grotesk';
+  font: 600 2.8rem/0.95 Poppins;
   color: var(--accent);
   letter-spacing: -0.08em;
 }
@@ -827,7 +833,7 @@ p {
   margin-top: auto;
   color: var(--accent);
   text-transform: uppercase;
-  font: 400 0.65rem 'JetBrains Mono';
+  font: 400 0.65rem Poppins;
 }
 .confidentiality {
   display: flex;
@@ -863,7 +869,7 @@ p {
 }
 .status-pill {
   display: inline-block;
-  font: 400 0.68rem 'JetBrains Mono';
+  font: 400 0.68rem Poppins;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
@@ -902,7 +908,7 @@ p {
     border-color 0.2s;
 }
 .course-top {
-  font: 400 0.68rem 'JetBrains Mono';
+  font: 400 0.68rem Poppins;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -940,7 +946,7 @@ p {
   margin-bottom: 18px;
 }
 .project-motto {
-  font: 400 0.82rem 'JetBrains Mono';
+  font: 400 0.82rem Poppins;
   color: var(--accent);
   margin-top: -8px;
 }
@@ -1002,7 +1008,7 @@ p {
   justify-content: space-between;
 }
 .footer-brand {
-  font: 600 1.5rem 'Space Grotesk';
+  font: 600 1.5rem Poppins;
   letter-spacing: -0.05em;
 }
 .footer-main p {
@@ -1045,11 +1051,25 @@ p {
   }
 }
 @media (max-width: 1100px) {
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+  }
+  .brand-copy {
+    min-height: 0;
+    gap: 0;
+  }
+  .brand-copy strong {
+    font-size: 18px;
+  }
   .brand-copy small {
     display: none;
   }
   .actions-divider {
     display: none;
+  }
+  .hero .button-row .button {
+    min-width: 0;
   }
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1118,10 +1138,10 @@ p {
     max-width: 720px;
   }
   .hero-visual {
-    justify-content: flex-start;
+    justify-content: center;
   }
   .portrait-stack {
-    width: min(100%, 350px);
+    width: min(100%, 300px);
   }
   .feature-grid {
     grid-template-columns: 1fr;
@@ -1171,6 +1191,11 @@ p {
     padding-top: 65px;
     padding-bottom: 55px;
     min-height: 0;
+  }
+  .hero .button-row .button {
+    min-height: 52px;
+    padding-inline: 17px;
+    font-size: 15px;
   }
   .hero h1 {
     margin-bottom: 18px;
@@ -1346,6 +1371,21 @@ p {
 .strategic-impact li {
   break-inside: avoid;
   margin-bottom: 8px;
+}
+@media (max-width: 374px) {
+  .header-inner {
+    gap: 4px;
+  }
+  .brand {
+    gap: 5px;
+  }
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+  }
+  .header-actions .icon-link {
+    width: 32px;
+  }
 }
 @media (max-width: 600px) {
   .strategic-impact ul {
