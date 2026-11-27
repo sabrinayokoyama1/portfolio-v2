@@ -335,7 +335,11 @@ export default function Site({
                     <span>{tr(featured.area, locale)}</span>
                   </div>
                   <div>
-                    <span className="metric-display">{featured.metric}</span>
+                    <span
+                      className={`metric-display${featured.metric === '75%' ? ' blue-metric' : ''}`}
+                    >
+                      {featured.metric}
+                    </span>
                     <p className="metric-label">
                       {tr(featured.metricLabel, locale)} <small>· {t.estimated}</small>
                     </p>
@@ -407,7 +411,9 @@ export default function Site({
                       <BarChart3 size={20} />
                     </div>
                     <div className="case-metric">
-                      <strong>{item.metric}</strong>
+                      <strong className={item.metric === '75%' ? 'blue-metric' : undefined}>
+                        {item.metric}
+                      </strong>
                       <span>
                         {tr(item.metricLabel, locale)}
                         {item.estimated && <small> · {t.estimated}</small>}
@@ -439,7 +445,11 @@ export default function Site({
               <p className="detail-area">{tr(selectedCase.area, locale)}</p>
               <div className="detail-hero glass">
                 <div>
-                  <span className="metric-display">{selectedCase.metric}</span>
+                  <span
+                    className={`metric-display${selectedCase.metric === '75%' ? ' blue-metric' : ''}`}
+                  >
+                    {selectedCase.metric}
+                  </span>
                   <p>
                     {tr(selectedCase.metricLabel, locale)}
                     {selectedCase.estimated && <small> · {t.estimated}</small>}
@@ -470,7 +480,9 @@ export default function Site({
                 <div className="impact-grid">
                   {selectedCase.impacts.map((impact, i) => (
                     <div className="impact-card glass" key={i}>
-                      <strong>{impact.value}</strong>
+                      <strong className={impact.value === '75%' ? 'blue-metric' : undefined}>
+                        {impact.value}
+                      </strong>
                       <span>{tr(impact.label, locale)}</span>
                       {impact.estimated && (
                         <small>
@@ -601,14 +613,22 @@ export default function Site({
       </main>
       <section className="contact-band">
         <div className="container contact-inner">
-          <div>
-            <h2>{t.contactTitle}</h2>
-            <p>{t.contactText}</p>
+          <h2>{t.contactTitle}</h2>
+          <div className="contact-actions">
+            <a className="button primary" href={links.email}>
+              <Mail size={18} aria-hidden="true" />
+              {t.contactEmail}
+            </a>
+            <a
+              className="button secondary"
+              href={links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin size={18} aria-hidden="true" />
+              {t.contactLinkedin}
+            </a>
           </div>
-          <a className="button primary" href={links.email}>
-            {t.contactButton}
-            <Mail size={18} />
-          </a>
         </div>
       </section>
       <footer className="footer">
