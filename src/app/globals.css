@@ -10,6 +10,8 @@
 :root {
   color-scheme: dark;
   --bg: #0c061e;
+  --page-gradient: linear-gradient(135deg, #281343 0%, #180c2d 36%, #0c061e 72%);
+  --binary-pattern: url('/binary-pattern.svg');
   --surface: #170f2c;
   --surface-strong: #211737;
   --surface-hover: #291d45;
@@ -27,6 +29,8 @@
 :root[data-theme='light'] {
   color-scheme: light;
   --bg: #fbfaff;
+  --page-gradient: none;
+  --binary-pattern: none;
   --surface: #fff;
   --surface-strong: #f4f0fc;
   --surface-hover: #efebfa;
@@ -49,7 +53,14 @@ html {
 }
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--binary-pattern), var(--page-gradient);
+  background-position: left top;
+  background-repeat: repeat, no-repeat;
+  background-size:
+    680px 420px,
+    cover;
+  background-attachment: fixed;
   color: var(--text);
   font-family: Inter, Arial, sans-serif;
   font-size: 16px;
@@ -319,8 +330,8 @@ p {
   position: relative;
   width: min(100%, 420px);
   aspect-ratio: 1;
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 2px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-radius: 50%;
   overflow: hidden;
 }
 .portrait-frame img {
