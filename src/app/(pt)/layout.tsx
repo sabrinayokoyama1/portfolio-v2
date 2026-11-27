@@ -4,7 +4,13 @@ import '../globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '256x256', type: 'image/png' },
+    ],
+    apple: '/favicon.png',
+  },
   robots: { index: true, follow: true },
 };
 

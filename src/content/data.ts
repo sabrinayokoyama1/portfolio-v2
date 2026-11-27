@@ -104,7 +104,7 @@ export const moments = [
 export const experience = [
   {
     role: { pt: 'Analista de Dados', en: 'Data Analyst' },
-    period: { pt: 'Jul 2026 — atual', en: 'Jul 2026 — present' },
+    period: { pt: 'Desde jul 2026', en: 'Since Jul 2026' },
     company: 'Banco Afinz',
     description: {
       pt: 'Evolução para a posição de Analista de Dados após atuações em assistência e aprendizagem na mesma instituição.',
@@ -118,7 +118,7 @@ export const experience = [
   },
   {
     role: { pt: 'Assistente de Dados', en: 'Data Assistant' },
-    period: { pt: 'Fev 2024 — Jul 2026', en: 'Feb 2024 — Jul 2026' },
+    period: { pt: 'Fev 2024 a jul 2026', en: 'Feb 2024 to Jul 2026' },
     company: 'Banco Afinz',
     description: {
       pt: 'Automação da ingestão e melhoria da qualidade de dados provenientes de fontes externas.',
@@ -141,7 +141,7 @@ export const experience = [
       pt: 'Aprendiz de Dados e Tecnologia · Análise e BI',
       en: 'Data & Technology Apprentice · Analytics & BI',
     },
-    period: { pt: 'Set 2023 — Fev 2024', en: 'Sep 2023 — Feb 2024' },
+    period: { pt: 'Set 2023 a fev 2024', en: 'Sep 2023 to Feb 2024' },
     company: 'Banco Afinz',
     description: {
       pt: 'Análise exploratória e construção de indicadores para Marketing e CRM.',
@@ -164,7 +164,7 @@ export const experience = [
       pt: 'Aprendiz de Dados e Tecnologia · Engenharia de Dados',
       en: 'Data & Technology Apprentice · Data Engineering',
     },
-    period: { pt: 'Mar 2023 — Set 2023', en: 'Mar 2023 — Sep 2023' },
+    period: { pt: 'Mar 2023 a set 2023', en: 'Mar 2023 to Sep 2023' },
     company: 'Banco Afinz',
     description: {
       pt: 'Desenvolvimento de pipelines ETL/ELT, integrações via API e modelos de dados em ambiente AWS.',
@@ -184,7 +184,7 @@ export const experience = [
       pt: 'Aprendiz de Dados e Tecnologia · Implantação e Pós-vendas',
       en: 'Data & Technology Apprentice · Implementation & After-Sales',
     },
-    period: { pt: 'Out 2022 — Mar 2023', en: 'Oct 2022 — Mar 2023' },
+    period: { pt: 'Out 2022 a mar 2023', en: 'Oct 2022 to Mar 2023' },
     company: 'Banco Afinz',
     description: {
       pt: 'Apoio a indicadores operacionais, organização de processos, treinamentos e melhoria contínua.',

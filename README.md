@@ -1,4 +1,4 @@
-# Sabrina Yokoyama — Portfolio V2
+# Sabrina Yokoyama | Portfolio V2
 
 Portfólio profissional bilíngue de Sabrina Yokoyama, Analista de Dados. Apresenta competências, trajetória no setor financeiro, três cases profissionais anonimizados, formação e dois projetos acadêmicos/pessoais. O tema padrão é escuro e o idioma padrão é português.
 

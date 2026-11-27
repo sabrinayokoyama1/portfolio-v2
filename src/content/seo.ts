@@ -54,7 +54,7 @@ export function pageMetadata(view: SeoView, locale: Locale): Metadata {
           url: `${origin}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: 'Sabrina Yokoyama — Data Analyst & Business Intelligence',
+          alt: 'Sabrina Yokoyama, Data Analyst & Business Intelligence',
         },
       ],
     },

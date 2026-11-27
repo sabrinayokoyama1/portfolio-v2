@@ -26,9 +26,9 @@ test('language and theme switches persist after refresh and navigation', async (
   await page.goto('/');
   await page.getByRole('button', { name: /Switch to English/ }).click();
   await expect(page).toHaveURL(/\/en$/);
-  await expect(page.locator('main h1')).toContainText('From complexity');
+  await expect(page.locator('main h1')).toHaveText('Sabrina Yokoyama');
   await page.reload();
-  await expect(page.locator('main h1')).toContainText('From complexity');
+  await expect(page.locator('main h1')).toHaveText('Sabrina Yokoyama');
   await page.getByRole('button', { name: 'Toggle theme' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   await page.getByRole('link', { name: 'Experience', exact: true }).first().click();

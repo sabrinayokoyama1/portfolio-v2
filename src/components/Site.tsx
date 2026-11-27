@@ -163,9 +163,6 @@ export default function Site({
       <header className="site-header">
         <div className="header-inner container">
           <Link href={homeHref} className="brand">
-            <span className="brand-mark">
-              SY<span>.</span>
-            </span>
             <span className="brand-copy">
               <strong>Sabrina Yokoyama</strong>
               <small>{t.tagline}</small>
@@ -190,7 +187,7 @@ export default function Site({
             <button
               className="icon-link lang-button"
               onClick={changeLanguage}
-              aria-label={`${locale === 'pt' ? 'EN' : 'PT'} — ${t.language}`}
+              aria-label={`${locale === 'pt' ? 'EN' : 'PT'}: ${t.language}`}
               title={t.language}
             >
               <Globe2 size={17} />
@@ -264,18 +261,8 @@ export default function Site({
           <>
             <section className="hero container">
               <div className="hero-content">
-                <div className="eyebrow">
-                  <span className="eyebrow-line" />
-                  {t.heroEyebrow}
-                </div>
-                <h1>
-                  {t.heroLine1}
-                  <br />
-                  <em>{t.heroLine2}</em>
-                </h1>
-                <p className="hero-name">
-                  Sabrina Yokoyama <span>/</span> {t.role}
-                </p>
+                <h1>Sabrina Yokoyama</h1>
+                <p className="hero-role">{t.role}</p>
                 <p className="hero-description">{t.heroDescription}</p>
                 <div className="button-row">
                   <Link href={localPath('/experience', locale)} className="button primary">
@@ -287,8 +274,6 @@ export default function Site({
                 </div>
               </div>
               <motion.div className="hero-visual" {...enter}>
-                <div className="visual-orbit orbit-one" />
-                <div className="visual-orbit orbit-two" />
                 <div className="portrait-frame">
                   <Image
                     src="/images/profile.png"
@@ -300,26 +285,20 @@ export default function Site({
                     width={400}
                     height={400}
                     priority
-                    sizes="(max-width: 720px) 230px, 340px"
+                    sizes="(max-width: 850px) 360px, 420px"
                   />
                 </div>
-                <div className="visual-caption">
-                  <span className="caption-rule" />
-                  <p>{t.heroAside}</p>
-                </div>
-                <span className="visual-coordinate">SY / DATA · 2026</span>
               </motion.div>
             </section>
             <section className="section container" id="capabilities">
               <div className="section-heading">
                 <div>
-                  <p className="section-kicker">01 / {t.capabilities}</p>
                   <h2>{t.capabilities}</h2>
                 </div>
                 <p>{t.capabilitiesIntro}</p>
               </div>
               <div className="skills-grid">
-                {skills.map((skill, i) => {
+                {skills.map((skill) => {
                   const Icon = skillIcons[skill.icon];
                   return (
                     <motion.div key={skill.title}>
@@ -328,7 +307,6 @@ export default function Site({
                           <span className="skill-icon">
                             <Icon size={23} strokeWidth={1.7} />
                           </span>
-                          <span className="card-index">0{i + 1}</span>
                         </div>
                         <h3>{skill.title}</h3>
                         <p>{tr(skill.description, locale)}</p>
@@ -343,7 +321,6 @@ export default function Site({
             <section className="section feature-section">
               <div className="container feature-grid">
                 <div>
-                  <p className="section-kicker">02 / {t.selectedWork}</p>
                   <h2>{t.selectedWorkTitle}</h2>
                   <p className="feature-text">{t.selectedWorkText}</p>
                   <Link href={localPath('/experience', locale)} className="text-link large">
@@ -371,13 +348,9 @@ export default function Site({
         )}
         {view === 'experience' && (
           <>
-            <PageIntro
-              eyebrow={t.experienceEyebrow}
-              title={t.experienceTitle}
-              intro={t.experienceIntro}
-            />
+            <PageIntro title={t.experienceTitle} intro={t.experienceIntro} />
             <section className="section container">
-              <SectionHead kicker="01" title={t.momentsTitle} intro={t.momentsIntro} />
+              <SectionHead title={t.momentsTitle} intro={t.momentsIntro} />
               <div className="moments-grid">
                 {moments.map((moment, i) => (
                   <button
@@ -404,7 +377,7 @@ export default function Site({
               </div>
             </section>
             <section className="section container">
-              <SectionHead kicker="02" title={t.trajectory} intro={t.trajectoryIntro} />
+              <SectionHead title={t.trajectory} intro={t.trajectoryIntro} />
               <div className="timeline">
                 {experience.map((item, i) => (
                   <article className="timeline-entry" key={i}>
@@ -425,7 +398,7 @@ export default function Site({
               </div>
             </section>
             <section className="section container">
-              <SectionHead kicker="03" title={t.casesTitle} intro={t.casesIntro} />
+              <SectionHead title={t.casesTitle} intro={t.casesIntro} />
               <div className="cases-grid">
                 {cases.map((item) => (
                   <article className="case-card glass" key={item.slug}>
@@ -476,12 +449,10 @@ export default function Site({
               </div>
               <div className="detail-columns">
                 <section>
-                  <span className="section-kicker">01 / {t.challenge}</span>
                   <h2>{t.challenge}</h2>
                   <p>{tr(selectedCase.problem, locale)}</p>
                 </section>
                 <section>
-                  <span className="section-kicker">02 / {t.approach}</span>
                   <h2>{t.approach}</h2>
                   <p>{tr(selectedCase.solution, locale)}</p>
                 </section>
@@ -536,13 +507,9 @@ export default function Site({
         )}
         {view === 'education' && (
           <>
-            <PageIntro
-              eyebrow={t.educationEyebrow}
-              title={t.educationTitle}
-              intro={t.educationIntro}
-            />
+            <PageIntro title={t.educationTitle} intro={t.educationIntro} />
             <section className="section container">
-              <SectionHead kicker="01" title={t.academic} />
+              <SectionHead title={t.academic} />
               <div className="degree-card glass">
                 <div className="degree-icon">
                   <GraduationCap size={34} strokeWidth={1.4} />
@@ -557,7 +524,7 @@ export default function Site({
               </div>
             </section>
             <section className="section container">
-              <SectionHead kicker="02" title={t.courses} intro={t.coursesIntro} />
+              <SectionHead title={t.courses} intro={t.coursesIntro} />
               <div className="courses-grid">
                 {courses.map((course) => (
                   <a
@@ -566,7 +533,7 @@ export default function Site({
                     href={links.certificates}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${course.title} — ${t.viewCertificates}`}
+                    aria-label={`${course.title}: ${t.viewCertificates}`}
                   >
                     <div className="course-top">
                       <span>{course.issuer}</span>
@@ -582,11 +549,7 @@ export default function Site({
         )}
         {view === 'projects' && (
           <>
-            <PageIntro
-              eyebrow={t.projectsEyebrow}
-              title={t.projectsTitle}
-              intro={t.projectsIntro}
-            />
+            <PageIntro title={t.projectsTitle} intro={t.projectsIntro} />
             <section className="section container">
               <div className="projects-grid">
                 {projects.map((project, i) => (
@@ -599,7 +562,6 @@ export default function Site({
                           <BarChart3 size={28} strokeWidth={1.5} />
                         )}
                       </span>
-                      <span className="card-index">0{i + 1}</span>
                     </div>
                     <p className="project-area">{tr(project.area, locale)}</p>
                     <h2>{project.title}</h2>
@@ -640,7 +602,6 @@ export default function Site({
       <section className="contact-band">
         <div className="container contact-inner">
           <div>
-            <p className="section-kicker">{t.contactEyebrow}</p>
             <h2>{t.contactTitle}</h2>
             <p>{t.contactText}</p>
           </div>
@@ -654,7 +615,7 @@ export default function Site({
         <div className="container footer-main">
           <div>
             <Link href={homeHref} className="footer-brand">
-              Sabrina Yokoyama<span>.</span>
+              Sabrina Yokoyama
             </Link>
             <p>{t.footerRole}</p>
           </div>
@@ -674,11 +635,10 @@ export default function Site({
           <span>
             © {new Date().getFullYear()} Sabrina Yokoyama. {t.rights}
           </span>
-          <span>{t.footerTech}</span>
           <a
             href="#main"
             className="back-top"
-            aria-label={`${locale === 'pt' ? 'Topo' : 'Top'} — ${t.backTop}`}
+            aria-label={`${locale === 'pt' ? 'Topo' : 'Top'}: ${t.backTop}`}
             title={t.backTop}
           >
             {locale === 'pt' ? 'Topo' : 'Top'}
@@ -689,21 +649,18 @@ export default function Site({
   );
 }
 
-function PageIntro({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) {
+function PageIntro({ title, intro }: { title: string; intro: string }) {
   return (
     <section className="page-intro container">
-      <p className="section-kicker">{eyebrow}</p>
       <h1>{title}</h1>
       <p>{intro}</p>
-      <span className="page-intro-rule" />
     </section>
   );
 }
-function SectionHead({ kicker, title, intro }: { kicker: string; title: string; intro?: string }) {
+function SectionHead({ title, intro }: { title: string; intro?: string }) {
   return (
     <div className="section-heading">
       <div>
-        <p className="section-kicker">{kicker}</p>
         <h2>{title}</h2>
       </div>
       {intro && <p>{intro}</p>}
