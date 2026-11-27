@@ -63,6 +63,13 @@ function localPath(path: string, locale: Locale) {
   return locale === 'en' ? (path === '/' ? '/en' : `/en${path}`) : path;
 }
 
+function improvementMetricClass(value: string) {
+  const percentage = value.trim().match(/^(\d+(?:[.,]\d+)?)%$/);
+  if (!percentage) return undefined;
+  const amount = Number(percentage[1].replace(',', '.'));
+  return amount > 50 ? 'metric-high' : amount < 50 ? 'metric-low' : undefined;
+}
+
 function IconLink({
   href,
   label,
@@ -262,7 +269,11 @@ export default function Site({
           </nav>
         </div>
       </header>
-      <main id="main" key={`${locale}-${view}-${slug || ''}`}>
+      <main
+        id="main"
+        className={view === 'home' ? 'home-page' : undefined}
+        key={`${locale}-${view}-${slug || ''}`}
+      >
         {view === 'home' && (
           <>
             <section className="hero container">
@@ -340,7 +351,7 @@ export default function Site({
                 })}
               </div>
             </section>
-            <CaseStudies locale={locale} />
+            <CaseStudies locale={locale} showIntro={false} />
           </>
         )}
         {view === 'experience' && (
@@ -409,7 +420,7 @@ export default function Site({
               <div className="detail-hero glass">
                 <div>
                   <span
-                    className={`metric-display${selectedCase.metric === '75%' ? ' blue-metric' : ''}`}
+                    className={`metric-display ${improvementMetricClass(selectedCase.metric) || ''}`.trim()}
                   >
                     {selectedCase.metric}
                   </span>
@@ -443,7 +454,7 @@ export default function Site({
                 <div className="impact-grid">
                   {selectedCase.impacts.map((impact, i) => (
                     <div className="impact-card glass" key={i}>
-                      <strong className={impact.value === '75%' ? 'blue-metric' : undefined}>
+                      <strong className={improvementMetricClass(impact.value)}>
                         {impact.value}
                       </strong>
                       <span>{tr(impact.label, locale)}</span>
@@ -574,7 +585,7 @@ export default function Site({
           </div>
         )}
         <nav className="next-page container" aria-label={t.nextSection}>
-          <Link className="button secondary next-page-link" href={nextPage.href}>
+          <Link className="button primary next-page-link" href={nextPage.href}>
             {nextPage.label}
             <ArrowRight size={19} aria-hidden="true" />
           </Link>
@@ -656,11 +667,11 @@ export default function Site({
   );
 }
 
-function CaseStudies({ locale }: { locale: Locale }) {
+function CaseStudies({ locale, showIntro = true }: { locale: Locale; showIntro?: boolean }) {
   const t = ui[locale];
   return (
     <section className="section container cases-section">
-      <SectionHead title={t.casesTitle} intro={t.casesIntro} />
+      <SectionHead title={t.casesTitle} intro={showIntro ? t.casesIntro : undefined} />
       <div className="cases-grid">
         {cases.map((item) => (
           <article className="case-card glass" key={item.slug}>
@@ -669,9 +680,7 @@ function CaseStudies({ locale }: { locale: Locale }) {
               <BarChart3 size={20} />
             </div>
             <div className="case-metric">
-              <strong className={item.metric === '75%' ? 'blue-metric' : undefined}>
-                {item.metric}
-              </strong>
+              <strong className={improvementMetricClass(item.metric)}>{item.metric}</strong>
               <span>
                 {tr(item.metricLabel, locale)}
                 {item.estimated && <small> · {t.estimated}</small>}
