@@ -122,6 +122,30 @@ test('header contact shortcut opens the homepage contact section', async ({ page
   }
 });
 
+test('next-page links and floating back-to-top control work', async ({ page }) => {
+  for (const [route, target, label] of [
+    ['/', '/experience', 'Ir para Experiências'],
+    ['/experience', '/education', 'Ir para Formação'],
+    ['/education', '/projects', 'Ir para Projetos'],
+    ['/projects', '/', 'Ir para Início'],
+    ['/en', '/en/experience', 'Go to Experience'],
+  ]) {
+    await page.goto(route);
+    const next = page.getByRole('navigation', {
+      name: route.startsWith('/en') ? 'Next page' : 'Próxima página',
+    });
+    await expect(next.getByRole('link', { name: label })).toHaveAttribute('href', target);
+  }
+
+  await page.goto('/en');
+  const backTop = page.getByRole('link', { name: 'Back to top' });
+  await expect(backTop).toBeHidden();
+  await page.locator('.next-page').scrollIntoViewIfNeeded();
+  await expect(backTop).toBeVisible();
+  await backTop.click();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(20);
+});
+
 test('visual QA captures each main page in both themes and viewport sizes', async ({ page }) => {
   mkdirSync('test-results/visual', { recursive: true });
   const routes = ['/', '/experience', '/education', '/projects'];

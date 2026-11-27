@@ -23,6 +23,8 @@ import {
   ExternalLink,
   LockKeyhole,
   UserRound,
+  ArrowRight,
+  ArrowUp,
 } from 'lucide-react';
 import {
   cases,
@@ -111,6 +113,7 @@ export default function Site({
   const theme = useSyncExternalStore(subscribeTheme, getTheme, getServerTheme);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openMoment, setOpenMoment] = useState<number | null>(null);
+  const [showBackTop, setShowBackTop] = useState(false);
   const reducedMotion = useReducedMotion();
   const activeIndex =
     view === 'case'
@@ -128,6 +131,12 @@ export default function Site({
   useEffect(() => {
     window.localStorage.setItem('sy-language', locale);
   }, [locale]);
+  useEffect(() => {
+    const updateBackTop = () => setShowBackTop(window.scrollY > 400);
+    updateBackTop();
+    window.addEventListener('scroll', updateBackTop, { passive: true });
+    return () => window.removeEventListener('scroll', updateBackTop);
+  }, []);
 
   function changeTheme() {
     window.localStorage.setItem('sy-theme', theme === 'dark' ? 'light' : 'dark');
@@ -153,14 +162,22 @@ export default function Site({
         transition: { duration: 0.5 },
       };
   const homeHref = localPath('/', locale);
-  const featured = cases[0];
   const selectedCase = cases.find((item) => item.slug === slug);
+  const nextPage = {
+    home: { href: localPath('/experience', locale), label: t.nextExperience },
+    experience: { href: localPath('/education', locale), label: t.nextEducation },
+    education: { href: localPath('/projects', locale), label: t.nextProjects },
+    projects: { href: homeHref, label: t.nextHome },
+    case: { href: localPath('/education', locale), label: t.nextEducation },
+    'not-found': { href: homeHref, label: t.nextHome },
+  }[view];
 
   return (
     <>
       <a className="skip-link" href="#main">
         {t.skip}
       </a>
+      <div id="top" />
       <header className="site-header">
         <div className="header-inner container">
           <Link href={homeHref} className="brand">
@@ -323,36 +340,7 @@ export default function Site({
                 })}
               </div>
             </section>
-            <section className="section feature-section">
-              <div className="container feature-grid">
-                <div>
-                  <h2>{t.selectedWorkTitle}</h2>
-                  <p className="feature-text">{t.selectedWorkText}</p>
-                  <Link href={localPath('/experience', locale)} className="text-link large">
-                    {t.allCases}
-                  </Link>
-                </div>
-                <Link
-                  href={localPath(`/experience/cases/${featured.slug}`, locale)}
-                  className="feature-case glass"
-                >
-                  <div className="case-topline">
-                    <span>{tr(featured.area, locale)}</span>
-                  </div>
-                  <div>
-                    <span
-                      className={`metric-display${featured.metric === '75%' ? ' blue-metric' : ''}`}
-                    >
-                      {featured.metric}
-                    </span>
-                    <p className="metric-label">
-                      {tr(featured.metricLabel, locale)} <small>· {t.estimated}</small>
-                    </p>
-                  </div>
-                  <h3>{tr(featured.title, locale)}</h3>
-                </Link>
-              </div>
-            </section>
+            <CaseStudies locale={locale} />
           </>
         )}
         {view === 'experience' && (
@@ -406,37 +394,7 @@ export default function Site({
                 ))}
               </div>
             </section>
-            <section className="section container">
-              <SectionHead title={t.casesTitle} intro={t.casesIntro} />
-              <div className="cases-grid">
-                {cases.map((item) => (
-                  <article className="case-card glass" key={item.slug}>
-                    <div className="case-topline">
-                      <span>{tr(item.area, locale)}</span>
-                      <BarChart3 size={20} />
-                    </div>
-                    <div className="case-metric">
-                      <strong className={item.metric === '75%' ? 'blue-metric' : undefined}>
-                        {item.metric}
-                      </strong>
-                      <span>
-                        {tr(item.metricLabel, locale)}
-                        {item.estimated && <small> · {t.estimated}</small>}
-                      </span>
-                    </div>
-                    <h3>{tr(item.title, locale)}</h3>
-                    <p>{tr(item.summary, locale)}</p>
-                    <TagList tags={item.keywords} />
-                    <Link
-                      className="text-link"
-                      href={localPath(`/experience/cases/${item.slug}`, locale)}
-                    >
-                      {t.exploreCase}
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </section>
+            <CaseStudies locale={locale} />
           </>
         )}
         {view === 'case' && selectedCase && (
@@ -615,6 +573,12 @@ export default function Site({
             </Link>
           </div>
         )}
+        <nav className="next-page container" aria-label={t.nextSection}>
+          <Link className="button secondary next-page-link" href={nextPage.href}>
+            {nextPage.label}
+            <ArrowRight size={19} aria-hidden="true" />
+          </Link>
+        </nav>
       </main>
       <section className="contact-band" id="contact">
         <div className="container contact-inner">
@@ -678,17 +642,51 @@ export default function Site({
           <span>
             © {new Date().getFullYear()} Sabrina Yokoyama. {t.rights}
           </span>
-          <a
-            href="#main"
-            className="back-top"
-            aria-label={`${locale === 'pt' ? 'Topo' : 'Top'}: ${t.backTop}`}
-            title={t.backTop}
-          >
-            {locale === 'pt' ? 'Topo' : 'Top'}
-          </a>
         </div>
       </footer>
+      <a
+        href="#top"
+        className={showBackTop ? 'floating-back-top visible' : 'floating-back-top'}
+        aria-label={t.backTop}
+        title={t.backTop}
+      >
+        <ArrowUp size={20} aria-hidden="true" />
+      </a>
     </>
+  );
+}
+
+function CaseStudies({ locale }: { locale: Locale }) {
+  const t = ui[locale];
+  return (
+    <section className="section container cases-section">
+      <SectionHead title={t.casesTitle} intro={t.casesIntro} />
+      <div className="cases-grid">
+        {cases.map((item) => (
+          <article className="case-card glass" key={item.slug}>
+            <div className="case-topline">
+              <span>{tr(item.area, locale)}</span>
+              <BarChart3 size={20} />
+            </div>
+            <div className="case-metric">
+              <strong className={item.metric === '75%' ? 'blue-metric' : undefined}>
+                {item.metric}
+              </strong>
+              <span>
+                {tr(item.metricLabel, locale)}
+                {item.estimated && <small> · {t.estimated}</small>}
+              </span>
+            </div>
+            <h3>{tr(item.title, locale)}</h3>
+            <p>{tr(item.summary, locale)}</p>
+            <TagList tags={item.keywords} />
+            <Link className="text-link" href={localPath(`/experience/cases/${item.slug}`, locale)}>
+              {t.exploreCase}
+            </Link>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 

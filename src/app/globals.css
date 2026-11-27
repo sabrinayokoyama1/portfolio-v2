@@ -95,7 +95,7 @@ h1 {
   font-size: clamp(3.6rem, 7.2vw, 8rem);
 }
 h2 {
-  font-size: clamp(1.98rem, 4.05vw, 3.825rem);
+  font-size: calc(clamp(1.98rem, 4.05vw, 3.825rem) - 3px);
 }
 h3 {
   font-size: 1.25rem;
@@ -166,7 +166,7 @@ p {
 }
 .brand-copy strong {
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
@@ -269,7 +269,7 @@ p {
 }
 .hero h1 {
   margin: 0 0 20px;
-  font-size: clamp(2rem, 5.5vw, 5.2rem);
+  font-size: calc(clamp(2rem, 5.5vw, 5.2rem) - 5px);
   line-height: 1.04;
   color: var(--accent);
   white-space: nowrap;
@@ -374,9 +374,6 @@ p {
 .section {
   padding-block: 95px;
 }
-#capabilities {
-  padding-top: 40px;
-}
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -473,40 +470,6 @@ p {
   margin-top: auto;
   padding-top: 22px;
 }
-.text-link.large {
-  font-size: 0.96rem;
-}
-.feature-section {
-  border-top: 1px solid var(--border);
-}
-.feature-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.88fr;
-  align-items: center;
-  gap: 10vw;
-}
-.feature-grid h2 {
-  max-width: 610px;
-}
-.feature-text {
-  max-width: 470px;
-  margin-bottom: 28px;
-}
-.feature-case {
-  min-height: 320px;
-  border-radius: 20px;
-  padding: 30px 34px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition:
-    transform 0.2s,
-    border-color 0.2s;
-}
-.feature-case:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
 .case-topline {
   color: var(--subtle);
   font: 400 0.7rem Poppins;
@@ -518,21 +481,10 @@ p {
   letter-spacing: -0.09em;
   color: var(--accent);
 }
-.metric-label {
-  font-size: 0.86rem;
-  max-width: 290px;
-  margin: 4px 0 0;
-}
-.metric-label small,
 .case-metric small,
 .detail-hero small {
   color: var(--accent);
   font-size: 0.75rem;
-}
-.feature-case h3 {
-  max-width: 380px;
-  margin: 25px 0 0;
-  font-size: 1.35rem;
 }
 .page-intro {
   padding-top: 115px;
@@ -547,7 +499,7 @@ p {
 }
 .page-intro > p:not(.section-kicker) {
   max-width: 690px;
-  font-size: 1.09rem;
+  font-size: 17px;
 }
 .moments-grid {
   display: grid;
@@ -689,7 +641,7 @@ p {
   color: var(--muted);
   margin: 0 0 20px;
   padding-left: 18px;
-  font-size: 0.9rem;
+  font-size: 17px;
 }
 .timeline-content li + li {
   margin-top: 3px;
@@ -731,7 +683,7 @@ p {
   margin: 25px 0 10px;
 }
 .case-card > p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.7;
 }
 .case-card .tags {
@@ -774,7 +726,7 @@ p {
 }
 .detail-hero p {
   max-width: 420px;
-  font-size: 1.04rem;
+  font-size: 17px;
   color: var(--text);
   margin: 4px 0 0;
 }
@@ -788,7 +740,6 @@ p {
 .detail-columns h2,
 .detail-tech h2,
 .detail-impact h2 {
-  font-size: 1.8rem;
   margin: 12px 0 18px;
 }
 .detail-columns p {
@@ -974,6 +925,18 @@ p {
 .not-found h1 {
   font-size: clamp(3rem, 7vw, 6rem);
 }
+.next-page {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid var(--border);
+  padding-top: 30px;
+  padding-bottom: 70px;
+}
+.next-page-link {
+  min-width: 250px;
+  justify-content: space-between;
+  font-size: 16px;
+}
 .contact-band {
   padding: 80px 0;
   background: var(--surface);
@@ -1029,15 +992,33 @@ p {
   font-size: 0.69rem;
   color: var(--subtle);
 }
-.back-top {
-  margin-left: auto;
+.floating-back-top {
+  position: fixed;
+  z-index: 30;
+  right: 24px;
+  bottom: 24px;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: var(--surface-strong);
-  color: var(--text);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--violet);
+  color: var(--button-text);
+  box-shadow: 0 12px 30px rgba(14, 7, 32, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    visibility 0.2s;
+}
+.floating-back-top.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 @media (max-width: 1300px) {
   .brand-copy small {
@@ -1060,7 +1041,7 @@ p {
     gap: 0;
   }
   .brand-copy strong {
-    font-size: 18px;
+    font-size: 16px;
   }
   .brand-copy small {
     display: none;
@@ -1143,10 +1124,6 @@ p {
   .portrait-stack {
     width: min(100%, 300px);
   }
-  .feature-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
   .section {
     padding-block: 70px;
   }
@@ -1179,7 +1156,7 @@ p {
     height: 30px;
   }
   .brand-copy strong {
-    font-size: 16px;
+    font-size: 14px;
   }
   .header-actions .icon-link {
     width: 34px;
@@ -1302,9 +1279,6 @@ p {
   .footer-bottom {
     flex-wrap: wrap;
   }
-  .back-top {
-    margin-left: auto;
-  }
 }
 @media (max-width: 390px) {
   .moments-grid {
@@ -1336,13 +1310,6 @@ p {
   object-fit: cover;
   object-position: center;
 }
-.back-top {
-  width: auto;
-  padding: 0 12px;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-
 .tag {
   font-size: 0.75rem;
 }
@@ -1356,11 +1323,17 @@ p {
   .polaroid-body span {
     font-size: 0.75rem;
   }
+  .next-page-link {
+    width: 100%;
+  }
+  .floating-back-top {
+    right: 16px;
+    bottom: 16px;
+    width: 46px;
+    height: 46px;
+  }
 }
 
-.strategic-impact h2 {
-  font-size: 1.8rem;
-}
 .strategic-impact ul {
   color: var(--muted);
   line-height: 1.8;
