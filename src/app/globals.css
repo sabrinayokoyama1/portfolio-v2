@@ -30,8 +30,8 @@
 :root[data-theme='light'] {
   color-scheme: light;
   --bg: #fbfaff;
-  --page-gradient: none;
-  --binary-pattern: none;
+  --page-gradient: linear-gradient(135deg, #e9ddfa 0%, #f4edfd 38%, #fbfaff 72%);
+  --binary-pattern: url('/binary-pattern.svg');
   --surface: #fff;
   --surface-strong: #f4f0fc;
   --surface-hover: #efebfa;
