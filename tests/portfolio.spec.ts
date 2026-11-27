@@ -106,6 +106,22 @@ test('mobile menu is operable by touch and closes after navigation', async ({ pa
   );
 });
 
+test('header contact shortcut opens the homepage contact section', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const [route, label] of [
+    ['/experience', 'Contato'],
+    ['/en/experience', 'Contact'],
+  ]) {
+    await page.goto(route);
+    await page.locator('.header-actions').getByRole('link', { name: label }).click();
+    await expect(page).toHaveURL(/#contact$/);
+    await expect(page.locator('#contact')).toBeInViewport();
+    await expect(page.locator('.hero-contact-icons a')).toHaveCount(4);
+    await expect(page.locator('#contact .button')).toHaveCount(4);
+    await expect(page.locator('.site-header a[href^="https"]')).toHaveCount(0);
+  }
+});
+
 test('visual QA captures each main page in both themes and viewport sizes', async ({ page }) => {
   mkdirSync('test-results/visual', { recursive: true });
   const routes = ['/', '/experience', '/education', '/projects'];

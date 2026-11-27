@@ -22,6 +22,7 @@ import {
   MessageCircle,
   ExternalLink,
   LockKeyhole,
+  UserRound,
 } from 'lucide-react';
 import {
   cases,
@@ -202,20 +203,14 @@ export default function Site({
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <span className="actions-divider" />
-            <span className="desktop-social">
-              <IconLink href={links.linkedin} label={t.linkedin}>
-                <Linkedin size={18} />
-              </IconLink>
-              <IconLink href={links.github} label={t.github}>
-                <Github size={18} />
-              </IconLink>
-              <IconLink href={links.email} label={t.email}>
-                <Mail size={18} />
-              </IconLink>
-              <IconLink href={links.whatsapp} label={t.whatsapp}>
-                <MessageCircle size={18} />
-              </IconLink>
-            </span>
+            <Link
+              href={`${homeHref}#contact`}
+              className="icon-link"
+              aria-label={t.contactTitle}
+              title={t.contactTitle}
+            >
+              <UserRound size={18} aria-hidden="true" />
+            </Link>
             <button
               className="icon-link menu-button"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -240,20 +235,6 @@ export default function Site({
               </Link>
             ))}
           </nav>
-          <div className="mobile-social">
-            <IconLink href={links.linkedin} label={t.linkedin}>
-              <Linkedin size={18} />
-            </IconLink>
-            <IconLink href={links.github} label={t.github}>
-              <Github size={18} />
-            </IconLink>
-            <IconLink href={links.email} label={t.email}>
-              <Mail size={18} />
-            </IconLink>
-            <IconLink href={links.whatsapp} label={t.whatsapp}>
-              <MessageCircle size={18} />
-            </IconLink>
-          </div>
         </div>
       </header>
       <main id="main" key={`${locale}-${view}-${slug || ''}`}>
@@ -274,19 +255,35 @@ export default function Site({
                 </div>
               </div>
               <motion.div className="hero-visual" {...enter}>
-                <div className="portrait-frame">
-                  <Image
-                    src="/images/profile.png"
-                    alt={
-                      locale === 'pt'
-                        ? 'Retrato de Sabrina Yokoyama'
-                        : 'Portrait of Sabrina Yokoyama'
-                    }
-                    width={400}
-                    height={400}
-                    priority
-                    sizes="(max-width: 850px) 360px, 420px"
-                  />
+                <div className="portrait-stack">
+                  <div className="portrait-frame">
+                    <Image
+                      src="/images/profile.png"
+                      alt={
+                        locale === 'pt'
+                          ? 'Retrato de Sabrina Yokoyama'
+                          : 'Portrait of Sabrina Yokoyama'
+                      }
+                      width={400}
+                      height={400}
+                      priority
+                      sizes="(max-width: 850px) 360px, 420px"
+                    />
+                  </div>
+                  <div className="hero-contact-icons">
+                    <IconLink href={links.email} label={t.email}>
+                      <Mail size={20} />
+                    </IconLink>
+                    <IconLink href={links.linkedin} label={t.linkedin}>
+                      <Linkedin size={20} />
+                    </IconLink>
+                    <IconLink href={links.github} label={t.github}>
+                      <Github size={20} />
+                    </IconLink>
+                    <IconLink href={links.whatsapp} label={t.whatsapp}>
+                      <MessageCircle size={20} />
+                    </IconLink>
+                  </div>
                 </div>
               </motion.div>
             </section>
@@ -611,7 +608,7 @@ export default function Site({
           </div>
         )}
       </main>
-      <section className="contact-band">
+      <section className="contact-band" id="contact">
         <div className="container contact-inner">
           <h2>{t.contactTitle}</h2>
           <div className="contact-actions">
@@ -627,6 +624,24 @@ export default function Site({
             >
               <Linkedin size={18} aria-hidden="true" />
               {t.contactLinkedin}
+            </a>
+            <a
+              className="button secondary"
+              href={links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github size={18} aria-hidden="true" />
+              {t.contactGithub}
+            </a>
+            <a
+              className="button secondary"
+              href={links.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle size={18} aria-hidden="true" />
+              {t.contactWhatsapp}
             </a>
           </div>
         </div>

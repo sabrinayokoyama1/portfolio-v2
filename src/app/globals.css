@@ -235,10 +235,6 @@ p {
   background: var(--border);
   margin: 0 5px;
 }
-.desktop-social {
-  display: flex;
-  align-items: center;
-}
 .menu-button,
 .mobile-menu {
   display: none;
@@ -329,9 +325,12 @@ p {
   display: flex;
   justify-content: flex-end;
 }
+.portrait-stack {
+  width: min(100%, 420px);
+}
 .portrait-frame {
   position: relative;
-  width: min(100%, 420px);
+  width: 100%;
   aspect-ratio: 1;
   border: 2px solid color-mix(in srgb, var(--accent) 40%, var(--border));
   border-radius: 50%;
@@ -342,6 +341,23 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.hero-contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+.hero-contact-icons .icon-link {
+  width: 48px;
+  height: 48px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.hero-contact-icons .icon-link:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
 }
 .section {
   padding-block: 95px;
@@ -947,6 +963,7 @@ p {
   padding: 80px 0;
   background: var(--surface);
   border-block: 1px solid var(--border);
+  scroll-margin-top: 88px;
 }
 .contact-inner {
   display: flex;
@@ -1017,15 +1034,11 @@ p {
   .nav-link {
     padding-inline: 9px;
   }
-  .desktop-social .icon-link {
-    width: 32px;
-  }
 }
 @media (max-width: 1100px) {
   .brand-copy small {
     display: none;
   }
-  .desktop-social,
   .actions-divider {
     display: none;
   }
@@ -1084,11 +1097,6 @@ p {
   .mobile-nav-link.active {
     color: var(--accent);
   }
-  .mobile-social {
-    display: flex;
-    gap: 8px;
-    padding-top: 12px;
-  }
   .header-actions {
     margin-left: auto;
   }
@@ -1103,7 +1111,7 @@ p {
   .hero-visual {
     justify-content: flex-start;
   }
-  .portrait-frame {
+  .portrait-stack {
     width: min(100%, 360px);
   }
   .feature-grid {
