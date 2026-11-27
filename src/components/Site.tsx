@@ -119,7 +119,6 @@ export default function Site({
   const pathname = usePathname();
   const theme = useSyncExternalStore(subscribeTheme, getTheme, getServerTheme);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openMoment, setOpenMoment] = useState<number | null>(null);
   const [showBackTop, setShowBackTop] = useState(false);
   const reducedMotion = useReducedMotion();
   const activeIndex =
@@ -271,7 +270,7 @@ export default function Site({
       </header>
       <main
         id="main"
-        className={view === 'home' ? 'home-page' : undefined}
+        className={view === 'experience' ? 'experience-page' : undefined}
         key={`${locale}-${view}-${slug || ''}`}
       >
         {view === 'home' && (
@@ -356,39 +355,35 @@ export default function Site({
         )}
         {view === 'experience' && (
           <>
-            <PageIntro title={t.experienceTitle} intro={t.experienceIntro} />
-            <section className="section container">
-              <SectionHead title={t.momentsTitle} intro={t.momentsIntro} />
+            <PageIntro title={t.experienceTitle} centered />
+            <section className="section container moments-section">
               <div className="moments-grid">
-                {moments.map((moment, i) => (
-                  <button
-                    className={openMoment === i ? 'polaroid open' : 'polaroid'}
-                    key={moment.title}
-                    onClick={() => setOpenMoment(openMoment === i ? null : i)}
-                    aria-expanded={openMoment === i}
-                    aria-label={`${openMoment === i ? t.hide : t.reveal}: ${moment.title}`}
-                  >
+                {moments.map((moment) => (
+                  <article className="polaroid" key={moment.title}>
                     <div className="polaroid-image">
                       <Image
                         src={moment.image}
                         alt={tr(moment.alt, locale)}
                         fill
-                        sizes="(max-width: 600px) 45vw, (max-width: 1100px) 45vw, 22vw"
+                        sizes="(max-width: 600px) 41vw, (max-width: 1100px) 41vw, 20vw"
                       />
                     </div>
                     <div className="polaroid-body">
                       <strong>{moment.title}</strong>
-                      <span>{openMoment === i ? tr(moment.description, locale) : t.reveal}</span>
+                      <span>{tr(moment.description, locale)}</span>
                     </div>
-                  </button>
+                  </article>
                 ))}
               </div>
             </section>
             <section className="section container">
-              <SectionHead title={t.trajectory} intro={t.trajectoryIntro} />
+              <SectionHead title={t.trajectory} centered />
               <div className="timeline">
                 {experience.map((item, i) => (
-                  <article className="timeline-entry" key={i}>
+                  <article
+                    className={i === 0 ? 'timeline-entry current' : 'timeline-entry'}
+                    key={i}
+                  >
                     <div className="timeline-period">{tr(item.period, locale)}</div>
                     <div className="timeline-content glass">
                       <span className="timeline-company">{item.company}</span>
@@ -699,17 +694,33 @@ function CaseStudies({ locale, showIntro = true }: { locale: Locale; showIntro?:
   );
 }
 
-function PageIntro({ title, intro }: { title: string; intro: string }) {
+function PageIntro({
+  title,
+  intro,
+  centered = false,
+}: {
+  title: string;
+  intro?: string;
+  centered?: boolean;
+}) {
   return (
-    <section className="page-intro container">
+    <section className={centered ? 'page-intro container centered' : 'page-intro container'}>
       <h1>{title}</h1>
-      <p>{intro}</p>
+      {intro && <p>{intro}</p>}
     </section>
   );
 }
-function SectionHead({ title, intro }: { title: string; intro?: string }) {
+function SectionHead({
+  title,
+  intro,
+  centered = false,
+}: {
+  title: string;
+  intro?: string;
+  centered?: boolean;
+}) {
   return (
-    <div className="section-heading">
+    <div className={centered ? 'section-heading centered' : 'section-heading'}>
       <div>
         <h2>{title}</h2>
       </div>

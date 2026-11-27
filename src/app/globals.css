@@ -393,6 +393,10 @@ p {
 .section-heading h2 {
   margin: 9px 0 0;
 }
+.section-heading.centered {
+  justify-content: center;
+  text-align: center;
+}
 .section-heading > p {
   max-width: 390px;
   margin: 0 0 5px;
@@ -509,6 +513,19 @@ p {
   font-size: var(--font-title);
   margin: 0 0 24px;
 }
+.page-intro.centered {
+  text-align: center;
+}
+.page-intro.centered h1 {
+  margin-inline: auto;
+}
+.experience-page .page-intro h1 {
+  font-size: var(--font-hero);
+  margin-bottom: 0;
+}
+.experience-page .moments-section {
+  padding-top: 60px;
+}
 .page-intro > p:not(.section-kicker) {
   max-width: 690px;
   font-size: var(--font-body);
@@ -517,6 +534,8 @@ p {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 21px;
+  width: 90%;
+  margin-inline: auto;
 }
 .polaroid {
   text-align: left;
@@ -526,9 +545,6 @@ p {
   background: #f6f3f7;
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
   transform: rotate(var(--rotation));
-  transition:
-    transform 0.25s,
-    box-shadow 0.25s;
   min-width: 0;
 }
 .polaroid:nth-child(1) {
@@ -543,14 +559,8 @@ p {
 .polaroid:nth-child(4) {
   --rotation: 2deg;
 }
-.polaroid:hover,
-.polaroid:focus-visible,
-.polaroid.open {
-  transform: rotate(0) translateY(-6px) scale(1.02);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
-}
 .polaroid-image {
-  height: 235px;
+  height: 212px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -590,7 +600,7 @@ p {
   display: block;
   margin-top: 7px;
   color: #65596b;
-  font-size: var(--font-body);
+  font-size: 16px;
   line-height: 1.5;
   min-height: 38px;
 }
@@ -626,11 +636,20 @@ p {
   background: var(--accent);
   box-shadow: 0 0 0 5px var(--glow);
 }
+.timeline-entry.current:after {
+  background: var(--metric-blue);
+  box-shadow: 0 0 0 5px rgba(39, 231, 245, 0.18);
+}
 .timeline-period {
   color: var(--accent);
   font-size: var(--font-label);
   padding-top: 13px;
   text-align: right;
+}
+.timeline-entry.current .timeline-period {
+  color: var(--metric-blue);
+  font-weight: 700;
+  text-transform: none;
 }
 .timeline-content {
   border-radius: 15px;
@@ -945,12 +964,8 @@ p {
 .next-page {
   display: flex;
   justify-content: flex-end;
-  border-top: 1px solid var(--border);
   padding-top: 30px;
   padding-bottom: 70px;
-}
-.home-page .next-page {
-  border-top: 0;
 }
 .next-page-link {
   min-width: 250px;
@@ -1076,6 +1091,9 @@ p {
     font-size: 40px;
     white-space: normal;
   }
+  .experience-page .page-intro h1 {
+    font-size: 40px;
+  }
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1145,6 +1163,9 @@ p {
   .hero h1 {
     font-size: 38px;
   }
+  .experience-page .page-intro h1 {
+    font-size: 38px;
+  }
   .hero-visual {
     justify-content: center;
   }
@@ -1205,6 +1226,9 @@ p {
     font-size: 34px;
     margin-bottom: 18px;
   }
+  .experience-page .page-intro h1 {
+    font-size: 34px;
+  }
   .hero-visual {
     margin-top: 0;
   }
@@ -1227,7 +1251,7 @@ p {
     gap: 15px;
   }
   .polaroid-image {
-    height: 165px;
+    height: 149px;
   }
   .polaroid-body {
     padding: 11px 4px 0;
@@ -1236,7 +1260,7 @@ p {
     font-size: var(--font-subtitle);
   }
   .polaroid-body span {
-    font-size: var(--font-body);
+    font-size: 16px;
   }
   .page-intro {
     padding-top: 70px;
@@ -1334,7 +1358,7 @@ p {
 }
 @media (max-width: 600px) {
   .polaroid-body span {
-    font-size: var(--font-body);
+    font-size: 16px;
   }
   .next-page-link {
     width: 100%;

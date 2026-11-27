@@ -38,14 +38,14 @@ test('language and theme switches persist after refresh and navigation', async (
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
 });
 
-test('event cards reveal descriptions and case studies have contextualized metrics', async ({
+test('event cards show descriptions and case studies have contextualized metrics', async ({
   page,
 }) => {
   await page.goto('/experience');
   const moment = page.locator('.polaroid').nth(1);
-  await moment.click();
-  await expect(moment).toHaveAttribute('aria-expanded', 'true');
   await expect(moment).toContainText('Palestrante convidada');
+  await expect(page.locator('.polaroid')).toHaveCount(4);
+  await expect(page.getByText('Ver descrição')).toHaveCount(0);
   await page.getByRole('link', { name: 'Explorar case' }).first().click();
   await expect(page).toHaveURL(/historico-de-contas$/);
   await expect(page.getByText('75%', { exact: true }).first()).toBeVisible();
