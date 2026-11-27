@@ -65,7 +65,7 @@ body {
   background-attachment: fixed;
   color: var(--text);
   font-family: Inter, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.6;
   overflow-x: hidden;
   transition:
@@ -142,7 +142,7 @@ p {
   backdrop-filter: blur(18px);
 }
 .header-inner {
-  min-height: 88px;
+  min-height: 94px;
   display: flex;
   align-items: center;
   gap: 30px;
@@ -154,6 +154,13 @@ p {
   min-width: 0;
   flex-shrink: 0;
 }
+.brand-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 .brand-copy {
   display: flex;
   flex-direction: column;
@@ -162,12 +169,12 @@ p {
 }
 .brand-copy strong {
   font-family: 'Space Grotesk';
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 .brand-copy small {
-  font-size: 0.66rem;
+  font-size: 16px;
   color: var(--subtle);
   white-space: nowrap;
   max-width: 510px;
@@ -184,7 +191,7 @@ p {
   display: block;
   padding: 10px 13px;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 16px;
   color: var(--muted);
   white-space: nowrap;
   transition:
@@ -226,8 +233,9 @@ p {
 }
 .lang-button {
   font-family: 'JetBrains Mono';
-  font-size: 0.72rem;
+  font-size: 16px;
   letter-spacing: 0;
+  width: 52px;
 }
 .actions-divider {
   height: 22px;
@@ -263,19 +271,20 @@ p {
 }
 .hero h1 {
   margin: 0 0 20px;
-  font-size: clamp(3.3rem, 6.5vw, 6.2rem);
+  font-size: clamp(1.85rem, 4.3vw, 4.5rem);
   line-height: 1.04;
-  text-wrap: balance;
+  color: var(--accent);
+  white-space: nowrap;
 }
 .hero-role {
-  font: 600 clamp(1.08rem, 1.7vw, 1.4rem) 'Space Grotesk';
+  font: 600 20px/1.4 'Space Grotesk';
   color: var(--text);
   letter-spacing: -0.02em;
   margin-bottom: 26px;
 }
 .hero-description {
   max-width: 590px;
-  font-size: 1.02rem;
+  font-size: 17px;
   line-height: 1.7;
 }
 .button-row {
@@ -326,7 +335,7 @@ p {
   justify-content: flex-end;
 }
 .portrait-stack {
-  width: min(100%, 420px);
+  width: min(100%, 410px);
 }
 .portrait-frame {
   position: relative;
@@ -963,7 +972,7 @@ p {
   padding: 80px 0;
   background: var(--surface);
   border-block: 1px solid var(--border);
-  scroll-margin-top: 88px;
+  scroll-margin-top: 94px;
 }
 .contact-inner {
   display: flex;
@@ -1060,7 +1069,7 @@ p {
     width: min(100% - 40px, 1440px);
   }
   .header-inner {
-    min-height: 72px;
+    min-height: 77px;
   }
   .nav {
     display: none;
@@ -1112,7 +1121,7 @@ p {
     justify-content: flex-start;
   }
   .portrait-stack {
-    width: min(100%, 360px);
+    width: min(100%, 350px);
   }
   .feature-grid {
     grid-template-columns: 1fr;
@@ -1139,11 +1148,24 @@ p {
   .container {
     width: min(100% - 32px, 1440px);
   }
+  .header-inner {
+    gap: 8px;
+  }
+  .brand {
+    gap: 7px;
+  }
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
   .brand-copy strong {
-    font-size: 0.9rem;
+    font-size: 16px;
   }
   .header-actions .icon-link {
     width: 34px;
+  }
+  .lang-button svg {
+    display: none;
   }
   .hero {
     padding-top: 65px;
@@ -1151,15 +1173,7 @@ p {
     min-height: 0;
   }
   .hero h1 {
-    font-size: clamp(3rem, 12vw, 4.6rem);
     margin-bottom: 18px;
-  }
-  .hero-role {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  .hero-description {
-    font-size: 0.95rem;
   }
   .hero-visual {
     margin-top: 0;
@@ -1281,9 +1295,6 @@ p {
   .impact-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .hero h1 {
-    font-size: 3.25rem;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1300,12 +1311,6 @@ p {
   object-fit: cover;
   object-position: center;
 }
-@media (min-width: 851px) and (max-width: 1100px) {
-  .hero h1 {
-    font-size: clamp(3.3rem, 6vw, 5.5rem);
-  }
-}
-
 .back-top {
   width: auto;
   padding: 0 12px;

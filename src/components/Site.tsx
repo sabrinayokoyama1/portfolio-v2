@@ -164,6 +164,14 @@ export default function Site({
       <header className="site-header">
         <div className="header-inner container">
           <Link href={homeHref} className="brand">
+            <Image
+              src="/favicon.png"
+              alt=""
+              width={40}
+              height={40}
+              className="brand-mark"
+              aria-hidden="true"
+            />
             <span className="brand-copy">
               <strong>Sabrina Yokoyama</strong>
               <small>{t.tagline}</small>
@@ -264,10 +272,10 @@ export default function Site({
                           ? 'Retrato de Sabrina Yokoyama'
                           : 'Portrait of Sabrina Yokoyama'
                       }
-                      width={400}
-                      height={400}
+                      width={410}
+                      height={410}
                       priority
-                      sizes="(max-width: 850px) 360px, 420px"
+                      sizes="(max-width: 850px) 350px, 410px"
                     />
                   </div>
                   <div className="hero-contact-icons">
