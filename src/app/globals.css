@@ -4,6 +4,9 @@
 @import '@fontsource/poppins/700.css';
 :root {
   color-scheme: dark;
+  --font-title: 18px;
+  --font-subtitle: 16px;
+  --font-body: 14px;
   --bg: #0c061e;
   --page-gradient: linear-gradient(135deg, #281343 0%, #180c2d 36%, #0c061e 72%);
   --binary-pattern: url('/binary-pattern.svg');
@@ -60,7 +63,7 @@ body {
   background-attachment: fixed;
   color: var(--text);
   font-family: Poppins, Arial, sans-serif;
-  font-size: 17px;
+  font-size: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
   transition:
@@ -90,15 +93,16 @@ h3 {
   font-family: Poppins, Arial, sans-serif;
   line-height: 1.13;
   letter-spacing: -0.045em;
+  font-weight: 700;
 }
 h1 {
-  font-size: clamp(3.6rem, 7.2vw, 8rem);
+  font-size: var(--font-title);
 }
 h2 {
-  font-size: calc(clamp(1.98rem, 4.05vw, 3.825rem) - 3px);
+  font-size: var(--font-subtitle);
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: var(--font-subtitle);
 }
 p {
   color: var(--muted);
@@ -166,12 +170,12 @@ p {
 }
 .brand-copy strong {
   font-family: Poppins;
-  font-size: 22px;
+  font-size: var(--font-title);
   line-height: 1.2;
   letter-spacing: -0.03em;
 }
 .brand-copy small {
-  font-size: 16px;
+  font-size: var(--font-body);
   line-height: 1.2;
   color: var(--subtle);
   white-space: nowrap;
@@ -189,7 +193,7 @@ p {
   display: block;
   padding: 10px 13px;
   border-radius: 999px;
-  font-size: 16px;
+  font-size: var(--font-body);
   color: var(--muted);
   white-space: nowrap;
   transition:
@@ -231,7 +235,7 @@ p {
 }
 .lang-button {
   font-family: Poppins;
-  font-size: 16px;
+  font-size: var(--font-body);
   letter-spacing: 0;
   width: 52px;
 }
@@ -254,7 +258,7 @@ p {
   text-transform: uppercase;
 }
 .section-kicker {
-  font-size: 0.75rem;
+  font-size: var(--font-body);
   font-weight: 400;
   color: var(--accent);
 }
@@ -269,20 +273,20 @@ p {
 }
 .hero h1 {
   margin: 0 0 20px;
-  font-size: calc(clamp(2rem, 5.5vw, 5.2rem) - 5px);
+  font-size: var(--font-title);
   line-height: 1.04;
   color: var(--accent);
   white-space: nowrap;
 }
 .hero-role {
-  font: 600 20px/1.4 Poppins;
+  font: 700 var(--font-subtitle)/1.4 Poppins;
   color: var(--text);
   letter-spacing: -0.02em;
   margin-bottom: 26px;
 }
 .hero-description {
   max-width: 700px;
-  font-size: 17px;
+  font-size: var(--font-body);
   line-height: 1.7;
 }
 .button-row {
@@ -295,7 +299,7 @@ p {
 .hero .button-row .button {
   min-width: 240px;
   min-height: 56px;
-  font-size: 16px;
+  font-size: var(--font-body);
 }
 .button {
   display: inline-flex;
@@ -306,7 +310,7 @@ p {
   border-radius: 999px;
   min-height: 49px;
   padding: 11px 21px;
-  font-size: 0.89rem;
+  font-size: var(--font-body);
   font-weight: 600;
   line-height: 1.3;
   transition:
@@ -436,7 +440,7 @@ p {
   margin: 26px 0 9px;
 }
 .skill-card p {
-  font-size: 0.9rem;
+  font-size: var(--font-body);
   line-height: 1.65;
   margin-bottom: 20px;
 }
@@ -446,7 +450,7 @@ p {
   gap: 6px;
 }
 .tag {
-  font-size: 0.68rem;
+  font-size: var(--font-body);
   line-height: 1.3;
   color: var(--muted);
   padding: 5px 8px;
@@ -460,7 +464,7 @@ p {
   gap: 9px;
   color: var(--accent-strong);
   font-weight: 600;
-  font-size: 0.86rem;
+  font-size: var(--font-body);
 }
 .text-link:hover {
   text-decoration: underline;
@@ -472,7 +476,7 @@ p {
 }
 .case-topline {
   color: var(--subtle);
-  font: 400 0.7rem Poppins;
+  font: 400 var(--font-body) Poppins;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -484,7 +488,7 @@ p {
 .case-metric small,
 .detail-hero small {
   color: var(--accent);
-  font-size: 0.75rem;
+  font-size: var(--font-body);
 }
 .page-intro {
   padding-top: 115px;
@@ -494,12 +498,12 @@ p {
 }
 .page-intro h1 {
   max-width: 1050px;
-  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-size: var(--font-title);
   margin: 0 0 24px;
 }
 .page-intro > p:not(.section-kicker) {
   max-width: 690px;
-  font-size: 17px;
+  font-size: var(--font-body);
 }
 .moments-grid {
   display: grid;
@@ -561,7 +565,7 @@ p {
   opacity: 0.25;
 }
 .placeholder-caption {
-  font: 400 0.62rem Poppins;
+  font: 400 var(--font-body) Poppins;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.8;
@@ -570,7 +574,7 @@ p {
   padding: 17px 8px 3px;
 }
 .polaroid-body strong {
-  font: 600 1.02rem Poppins;
+  font: 700 var(--font-subtitle) Poppins;
   display: block;
   color: #211536;
 }
@@ -578,7 +582,7 @@ p {
   display: block;
   margin-top: 7px;
   color: #65596b;
-  font-size: 0.78rem;
+  font-size: var(--font-body);
   line-height: 1.5;
   min-height: 38px;
 }
@@ -616,7 +620,7 @@ p {
 }
 .timeline-period {
   color: var(--accent);
-  font-size: 0.7rem;
+  font-size: var(--font-body);
   padding-top: 13px;
   text-align: right;
 }
@@ -626,13 +630,13 @@ p {
 }
 .timeline-company {
   color: var(--accent);
-  font: 400 0.73rem Poppins;
+  font: 400 var(--font-body) Poppins;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 .timeline-content h3 {
   margin: 10px 0;
-  font-size: 1.4rem;
+  font-size: var(--font-subtitle);
 }
 .timeline-content p {
   margin-bottom: 10px;
@@ -641,7 +645,7 @@ p {
   color: var(--muted);
   margin: 0 0 20px;
   padding-left: 18px;
-  font-size: 17px;
+  font-size: var(--font-body);
 }
 .timeline-content li + li {
   margin-top: 3px;
@@ -674,16 +678,16 @@ p {
   letter-spacing: -0.08em;
 }
 .case-metric span {
-  font-size: 0.75rem;
+  font-size: var(--font-body);
   line-height: 1.5;
   color: var(--muted);
 }
 .case-card h3 {
-  font-size: 1.33rem;
+  font-size: var(--font-subtitle);
   margin: 25px 0 10px;
 }
 .case-card > p {
-  font-size: 0.9rem;
+  font-size: var(--font-body);
   line-height: 1.7;
 }
 .case-card .tags {
@@ -699,7 +703,7 @@ p {
 .back-link {
   display: inline-block;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: var(--font-body);
   margin-bottom: 85px;
 }
 .back-link:hover {
@@ -707,11 +711,11 @@ p {
 }
 .case-detail h1 {
   max-width: 1000px;
-  font-size: clamp(3.4rem, 6.2vw, 6.5rem);
+  font-size: var(--font-title);
   margin: 12px 0 20px;
 }
 .detail-area {
-  font-size: 0.77rem;
+  font-size: var(--font-body);
   color: var(--muted);
   margin-bottom: 42px;
 }
@@ -726,7 +730,7 @@ p {
 }
 .detail-hero p {
   max-width: 420px;
-  font-size: 17px;
+  font-size: var(--font-body);
   color: var(--text);
   margin: 4px 0 0;
 }
@@ -776,7 +780,7 @@ p {
   color: var(--metric-blue);
 }
 .impact-card span {
-  font-size: 0.78rem;
+  font-size: var(--font-body);
   line-height: 1.5;
   color: var(--muted);
 }
@@ -784,7 +788,7 @@ p {
   margin-top: auto;
   color: var(--accent);
   text-transform: uppercase;
-  font: 400 0.65rem Poppins;
+  font: 400 var(--font-body) Poppins;
 }
 .confidentiality {
   display: flex;
@@ -796,7 +800,7 @@ p {
 }
 .confidentiality p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: var(--font-body);
 }
 .confidentiality strong {
   color: var(--text);
@@ -820,7 +824,7 @@ p {
 }
 .status-pill {
   display: inline-block;
-  font: 400 0.68rem Poppins;
+  font: 400 var(--font-body) Poppins;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
@@ -830,12 +834,12 @@ p {
   padding: 6px 11px;
 }
 .degree-card h3 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-size: var(--font-subtitle);
   margin: 15px 0 7px;
 }
 .degree-subtitle {
   color: var(--accent);
-  font-size: 0.87rem;
+  font-size: var(--font-body);
 }
 .degree-card p:not(.degree-subtitle) {
   max-width: 850px;
@@ -859,14 +863,14 @@ p {
     border-color 0.2s;
 }
 .course-top {
-  font: 400 0.68rem Poppins;
+  font: 400 var(--font-body) Poppins;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 .course-card h3 {
   margin: 16px 0;
-  font-size: 1.14rem;
+  font-size: var(--font-subtitle);
 }
 .course-card .tags {
   margin-top: auto;
@@ -888,16 +892,16 @@ p {
     border-color 0.2s;
 }
 .project-area {
-  font-size: 0.7rem;
+  font-size: var(--font-body);
   color: var(--accent);
   margin: 34px 0 9px;
 }
 .project-card h2 {
-  font-size: clamp(1.8rem, 3.24vw, 2.88rem);
+  font-size: var(--font-subtitle);
   margin-bottom: 18px;
 }
 .project-motto {
-  font: 400 0.82rem Poppins;
+  font: 400 var(--font-body) Poppins;
   color: var(--accent);
   margin-top: -8px;
 }
@@ -908,7 +912,7 @@ p {
   margin: 8px 0 22px;
 }
 .project-note {
-  font-size: 0.78rem !important;
+  font-size: var(--font-body);
   margin-top: auto;
   margin-bottom: 23px;
 }
@@ -923,7 +927,7 @@ p {
   min-height: 65vh;
 }
 .not-found h1 {
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: var(--font-title);
 }
 .next-page {
   display: flex;
@@ -935,7 +939,7 @@ p {
 .next-page-link {
   min-width: 250px;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: var(--font-body);
 }
 .contact-band {
   padding: 80px 0;
@@ -971,11 +975,11 @@ p {
   justify-content: space-between;
 }
 .footer-brand {
-  font: 600 1.5rem Poppins;
+  font: 700 var(--font-title) Poppins;
   letter-spacing: -0.05em;
 }
 .footer-main p {
-  font-size: 0.85rem;
+  font-size: var(--font-body);
   margin: 3px 0 0;
 }
 .footer-social {
@@ -989,7 +993,7 @@ p {
   border-top: 1px solid var(--border);
   margin-top: 40px;
   padding-top: 20px;
-  font-size: 0.69rem;
+  font-size: var(--font-body);
   color: var(--subtle);
 }
 .floating-back-top {
@@ -1172,7 +1176,7 @@ p {
   .hero .button-row .button {
     min-height: 52px;
     padding-inline: 17px;
-    font-size: 15px;
+    font-size: var(--font-body);
   }
   .hero h1 {
     margin-bottom: 18px;
@@ -1205,17 +1209,17 @@ p {
     padding: 11px 4px 0;
   }
   .polaroid-body strong {
-    font-size: 0.87rem;
+    font-size: var(--font-subtitle);
   }
   .polaroid-body span {
-    font-size: 0.7rem;
+    font-size: var(--font-body);
   }
   .page-intro {
     padding-top: 70px;
     padding-bottom: 55px;
   }
   .page-intro h1 {
-    font-size: clamp(3rem, 10vw, 4.5rem);
+    font-size: var(--font-title);
   }
   .timeline-entry {
     grid-template-columns: 1fr;
@@ -1311,17 +1315,17 @@ p {
   object-position: center;
 }
 .tag {
-  font-size: 0.75rem;
+  font-size: var(--font-body);
 }
 .timeline-period,
 .course-top,
 .case-topline,
 .footer-bottom {
-  font-size: 0.75rem;
+  font-size: var(--font-body);
 }
 @media (max-width: 600px) {
   .polaroid-body span {
-    font-size: 0.75rem;
+    font-size: var(--font-body);
   }
   .next-page-link {
     width: 100%;
